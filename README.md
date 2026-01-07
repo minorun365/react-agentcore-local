@@ -11,7 +11,8 @@ react-agentcore-local/
 │   │   └── App.tsx
 │   └── package.json
 ├── backend/            # Python + AgentCore
-│   ├── main.py
+│   ├── src/
+│   │   └── main.py
 │   └── requirements.txt
 └── README.md
 ```
@@ -47,7 +48,7 @@ http://localhost:5173
 
 ```bash
 mkdir react-agentcore-local && cd react-agentcore-local
-mkdir backend
+mkdir -p backend/src
 ```
 
 ### 2. フロントエンド
@@ -91,7 +92,7 @@ strands-agents
 strands-agents-tools[rss]
 ```
 
-`main.py` を本リポジトリからコピー。
+`src/main.py` を本リポジトリからコピー。
 
 ### 4. 起動
 
