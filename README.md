@@ -105,3 +105,51 @@ cd backend && pip install -r requirements.txt && agentcore dev
 # フロントエンド
 cd frontend && npm run dev
 ```
+
+
+---
+
+## おまけ： AWS CloudShell上で起動する手順
+
+ターミナル1（バックエンド）
+
+```
+sudo dnf -y install python3.13 python3.13-pip zip
+alias python=python3.13
+alias pip=pip3.13
+
+mkdir react-agentcore-local && cd react-agentcore-local
+mkdir -p backend/src
+
+npm create vite@latest frontend -- --template react-swc-ts
+
+cd frontend
+npm install react-markdown
+nano vite.config.ts
+
+cd src
+rm App.*
+nano App.tsx
+nano App.css
+
+cd ../../backend
+nano requirements.txt
+
+nano src/main.py
+
+pip install --user -r requirements.txt uv bedrock-agentcore-starter-toolkit
+agentcore dev
+```
+
+ターミナル2（フロントエンド）
+
+```
+cd react-agentcore-local/frontend
+npm run dev
+```
+
+ターミナル3（Webアクセス）
+
+```
+ssh -p 443 -R0:localhost:5173 a.pinggy.io
+```
